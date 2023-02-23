@@ -40,6 +40,8 @@ body {
     --glow-blur-size: 10px;
     --glow-offset: 0px;
     --animation-speed: 800ms;
+    --number-of-glow: 2;
+
     /* Ne pas changer! utilisé pour les calculs */
     --container-offset: 100px;
     position: relative;
@@ -61,11 +63,11 @@ body {
     height: calc(100% - var(--container-offset) + var(--glow-offset)) ;
     x: calc(var(--container-offset) / 2 - calc(var(--glow-offset)/2));
     y: calc(var(--container-offset) / 2 - calc(var(--glow-offset)/2));
-    rx: 1.25rem; /* Pb avec Safari */
+    /* rx: 1.25rem; Pb avec Safari */
     stroke: #000;
     stroke-width: 5px;
     fill: transparent;
-    stroke-dasharray: var(--glow-line-length) calc(50px - var(--glow-line-length));
+    stroke-dasharray: var(--glow-line-length) calc( calc(100px / var(--number-of-glow) ) - var(--glow-line-length));
 }
 
 .glow-effect:is(:hover, :focus) :is(.glow-line, .glow-blur) {
@@ -101,4 +103,9 @@ body {
 }
 .glow-effect[data-glow-offset="true"] {
     --glow-offset: 10px;
+}
+.glow-effect[data-glow-number="one"] {
+    --glow-line-length: 20px;
+    --number-of-glow: 1;
+    --animation-speed: 2000ms;
 }
