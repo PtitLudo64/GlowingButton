@@ -38,8 +38,9 @@ body {
     --glow-line-length: 20px;
     --glow-blur-color: #fff;
     --glow-blur-size: 10px;
+    --glow-dash-offset: -80px;
     --glow-offset: 0px;
-    --animation-speed: 800ms;
+    --animation-speed: 1000ms;
     --number-of-glow: 2;
 
     /* Ne pas changer! utilisé pour les calculs */
@@ -71,7 +72,7 @@ body {
 }
 
 .glow-effect:is(:hover, :focus) :is(.glow-line, .glow-blur) {
-    stroke-dashoffset: -80px;
+    stroke-dashoffset: var(--glow-dash-offset);
     transition: 
         stroke-dashoffset
         var(--animation-speed)
@@ -105,7 +106,9 @@ body {
     --glow-offset: 10px;
 }
 .glow-effect[data-glow-number="one"] {
-    --glow-line-length: 20px;
+    --glow-line-length: 16px;
     --number-of-glow: 1;
-    --animation-speed: 2000ms;
+    --glow-dash-offset: -13px;
+    --animation-speed: 200ms;
+    --glow-offset: 1px;
 }
